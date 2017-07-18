@@ -4,6 +4,24 @@ export const HttpService = class {
     this.$http = $http
   }
 
+  getAllFlights () {
+    let method = 'GET'
+    let apiUrl = 'http://localhost:8000/flights'
+
+    return this.$http({
+      method: method,
+      url: apiUrl,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'content-type': 'application/json'
+      }
+    }).then((response) => {
+      return response.data
+    }, (error) => {
+      console.log('failed getAllFlights', error.data)
+    })
+  }
+
   getUserFollowing (username) {
     return this.$http.get(`http://localhost:8080/user/users/@${username}/following`)
     .then((response) => {

@@ -8,8 +8,10 @@ import com.cooksys.entity.User;
 @Repository
 public interface UserRepository extends JpaRepository<User, Long>{
 	
-	User findById(long id);
+	User findById(Integer id);
 	
 	User findByUsername(String username);
+	
+	User findByUsernameEqualsAndPasswordEquals(String username, String password);
 
 }

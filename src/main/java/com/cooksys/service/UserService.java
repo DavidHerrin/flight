@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.cooksys.entity.Credentials;
 import com.cooksys.entity.User;
 import com.cooksys.repository.UserRepository;
 
@@ -19,7 +20,7 @@ public class UserService {
 		return repo.findAll();
 	}
 
-	public User get(long id) {
+	public User get(Integer id) {
 		return repo.findById(id);
 	}
 	
@@ -29,6 +30,12 @@ public class UserService {
 	
 	public User create(User user) {
 		return repo.save(user);
+	}
+	
+	public User checkUserCredentials(Credentials creds) {
+		return repo
+				.findByUsernameEqualsAndPasswordEquals(
+						creds.getUsername(), creds.getPassword());
 	}
 
 }

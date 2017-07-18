@@ -34,7 +34,7 @@ public class User {
 	
 	@OneToMany(mappedBy = "flier")
 	@JsonIgnore
-	List<Itenerary> iteneraries;
+	List<Itinerary> itineraries;
 
 	public Integer getId() {
 		return id;
@@ -76,13 +76,13 @@ public class User {
 		this.lastname = lastname;
 	}
 
-	public List<Itenerary> getIteneraries() {
-		return iteneraries;
-	}
-
-	public void setIteneraries(List<Itenerary> iteneraries) {
-		this.iteneraries = iteneraries;
-	}
+//	public List<Itenerary> getIteneraries() {
+//		return iteneraries;
+//	}
+//
+//	public void setIteneraries(List<Itenerary> iteneraries) {
+//		this.iteneraries = iteneraries;
+//	}
 
 	@Override
 	public int hashCode() {

@@ -24,7 +24,7 @@ public class MyFlight {
 	long flightOffset;
 	
 	@ManyToOne
-	Itenerary route;
+	Itinerary route;
 
 	public Integer getId() {
 		return id;
@@ -66,11 +66,11 @@ public class MyFlight {
 		this.flightOffset = flightOffset;
 	}
 
-	public Itenerary getRoute() {
+	public Itinerary getRoute() {
 		return route;
 	}
 
-	public void setRoute(Itenerary route) {
+	public void setRoute(Itinerary route) {
 		this.route = route;
 	}
 

@@ -1,7 +1,7 @@
 import ngUirouter from 'angular-ui-router'
 import localStorage from 'angular-local-storage'
 // import UsersService from 'app/service/users.service'
-// import flightMap from 'app/map/map.module'
+import flightMap from 'app/map/map.module'
 // import ngMaterial from 'angular-material'
 // import ngAria from 'angular-aria'
 // import ngAnimate from 'angular-animate'
@@ -39,7 +39,7 @@ export default ng
     usersettingsConfig,
     profileConfig,
     // UsersService,
-    // flightMap,
+    flightMap,
     // ngMaterial,
     // ngAria,
     // ngAnimate,

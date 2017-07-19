@@ -94,7 +94,7 @@
               </span>
             </a>
           </th>
-          <th>
+          <th>Transfer In
             <a>
 
               <span>
@@ -124,13 +124,13 @@
               {{flight.origin}}
             </td>
             <td>{{flight.destination}}</td>
-            <td></td>
+            <td>{{flight.connection}}</td>
             <!-- <td>{{user.profile.email}}</td> -->
         <!-- <td>{{user.profile.phone}}</td> -->
           </tr>
         </tbody>
       </table>
 
-      <h2 ng-show="usersettings.shownoflights">Sorry, no flights available</h2>
+      <h2 ng-show="usersettings.shownoflights">Sorry, no flights available, please check again later</h2>
       <h2 ng-show="usersettings.showValidCities">Valid cities are: Memphis, NASHVILLE, KNOXVILLE and CHATTANOOGA</h2>
     </div>

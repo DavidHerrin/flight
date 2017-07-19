@@ -19,6 +19,8 @@ public class MyFlight {
 	
 	String destination;
 	
+	String connection;
+	
 	long flightTime;
 	
 	long flightOffset;
@@ -48,6 +50,14 @@ public class MyFlight {
 
 	public void setDestination(String destination) {
 		this.destination = destination;
+	}
+
+	public String getConnection() {
+		return connection;
+	}
+
+	public void setConnection(String connection) {
+		this.connection = connection;
 	}
 
 	public long getFlightTime() {

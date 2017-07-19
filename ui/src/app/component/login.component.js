@@ -44,31 +44,30 @@ const controller = class FtLoginController {
   registerSubmit () {
       this.$http({
         method: 'POST',
-        url: 'http://localhost:8080/user/users',
-         params: { firstName: this.firstname, lastName: this.lastname, phone: this.phone },
-        data:
-        {
-          "credentials": {
-            "password": this.regpassword,
-            "username": this.regusername
-            },
-            "profile": {
-              "email": this.email
-            }
-          }
+        url: 'http://localhost:8000/users',
+         params: { firstname: this.firstname, lastname: this.lastname, username: this.regusername, password: this.regpassword }
+        // data:
+        // {
+        //   "user": {
+        //     "username": this.regusername,this.regpassword
+        //     "password": this.regpassword,
+        //     "firstname": this.firstname,
+        //     "lastname": this.lastname
+        //     }
+        //   }
         })
      .then((response) => {
-      // alert(JSON.stringify(response.data) + '3')
+      alert(JSON.stringify(response.data) + '3')
        if (response.status === 201) {
          this.saveState('username', this.regusername)
          this.saveState('password', this.regpassword)
          this.saveState('isAuthenticated', true)
          this.$state.transitionTo('home')
-        //  alert('User Created!' + ' ' + '201')
+         alert('User Created!' + ' ' + '201')
        }
      })
-
   }
+
   checkUser () {
     this.$http({
       method: 'GET',

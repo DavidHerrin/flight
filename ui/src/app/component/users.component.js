@@ -158,13 +158,13 @@ const controller =
     //   this.followingArr = this.followingArr.filter(elem => elem !== username)
     //   // this.following()  // causes flicker and button doesn't change on first click
     // }
-    // logout () {
-    //   this.localStorageService.remove('username')
-    //   this.localStorageService.remove('password')
-    //   this.localStorageService.remove('isAuthenticated')
-    //   this.localStorageService.remove('author')
-    //   this.$state.transitionTo('login')
-    // }
+    logout () {
+      this.localStorageService.remove('username')
+      this.localStorageService.remove('password')
+      this.localStorageService.remove('isAuthenticated')
+      this.localStorageService.remove('author')
+      this.$state.transitionTo('login')
+    }
 
  }
 export const ftUsers = {

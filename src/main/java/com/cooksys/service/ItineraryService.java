@@ -29,7 +29,7 @@ public class ItineraryService {
 		return repo.save(itinerary);
 	}
 	
-	public List<Itinerary> findItinerary(String origin, String destination) {
+	public List<MyFlight> findItinerary(String origin, String destination) {
 		List<Itinerary> itinList = new ArrayList<Itinerary>();
 		List<Flight> flightList = flightService.getDailyFlightList();
 		Itinerary currItin = new Itinerary();
@@ -43,12 +43,13 @@ public class ItineraryService {
 				currFlight.setFlightOffset(flight.getOffset());
 				currFlight.setFlightTime(flight.getFlightTime());
 				myFlightList.add(currFlight);
+//				myFlightList.add(flight);
 			}
 		}
 		currItin.setFlights(myFlightList);
 		itinList.add(currItin);
 		
-		return itinList;
+		return myFlightList;
 	}
  
 }

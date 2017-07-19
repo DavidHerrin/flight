@@ -1,9 +1,9 @@
 <div class="splash">
 </div>
-<div class="col-sm-10 col-sm-offset-1 hid">
+<!-- <div class="col-sm-10 col-sm-offset-1 hid">
     <div class="row">
       <div class="col-sm-6 col-sm-offset-3 text-center">
-          <form ng-submit="usersettings.updateUser()" class="form">
+          <form ng-submit="usersettings.updateUser()" class="form"> -->
 
             <!-- <div class="form-group">
             <input type="text" class="form-control sbox" ng-model="usersettings.firstname" placeholder="First Name" required=""/>
@@ -38,23 +38,23 @@
             <button type="submit" class="btn btn-success">UPDATE</button></br></br>
             </div> -->
 
-          </form>
+          <!-- </form>
 
       </div>
     </div>
-</div>
-
+</div> -->
+<button type="button" class="btn btn-default" ng-click="users.logout()">LOGOUT</button>
 <div class="col-sm-10 col-sm-offset-1 hid">
   <div class="row">
     <div class="col-sm-6 col-sm-offset-3 text-center">
       <form ng-submit="usersettings.searchFlights()" class="deleteform">
 
         <div class="deleteform-group">
-        <input type="username" class="form-control sbox" ng-model="usersettings.username" placeholder="Source City" required=""/>
+        <input class="form-control sbox" ng-model="usersettings.origin" placeholder="Source City" required=""/>
         </div>
 
         <div class="deleteform-group">
-        <input type="password" class="form-control sbox" ng-model="usersettings.password" placeholder="Destination City" required=""/>
+        <input class="form-control sbox" ng-model="usersettings.destination" placeholder="Destination City" required=""/>
         </div>
 
         <div class="deleteform-group">
@@ -65,4 +65,70 @@
         </form>
         </div>
       </div>
+    </div>
+
+    <div class ="usersettings">
+      <table class="table table-bordered usertable" header-fixed>
+        <thead>
+          <th>Departure</th>
+          <th>Flight Time</th>
+          <th>
+            <a>
+
+              <span>
+                <span>
+                </span>
+                <span>
+                </span>
+              </span>
+            </a>
+          </th>
+          <th>Departure City</th>
+          <th>Destination
+            <a>
+              <span>
+                <span>
+                </span>
+                <span>
+                </span>
+              </span>
+            </a>
+          </th>
+          <th>
+            <a>
+
+              <span>
+                <span>
+                </span>
+                <span>
+                </span>
+              </span>
+            </a>
+          </th>
+        </thead>
+        <tbody>
+          <tr ng-repeat="flight in usersettings.flights track by $index"
+              ng-class="{'selected':$index == selectedRow}">
+            <td>
+              {{flight.flightOffset}}
+            </td>
+            <td>
+              {{flight.flightTime}}
+            </td>
+            <td>
+              <a>
+
+              </a>
+            </td>
+            <td>
+              {{flight.origin}}
+            </td>
+            <td>{{flight.destination}}</td>
+            <td></td>
+            <!-- <td>{{user.profile.email}}</td> -->
+        <!-- <td>{{user.profile.phone}}</td> -->
+          </tr>
+        </tbody>
+      </table>
+      <h2 ng-show="usersettings.shownoflights">Sorry, no flights available</h2>
     </div>

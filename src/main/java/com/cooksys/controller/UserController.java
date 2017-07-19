@@ -41,9 +41,23 @@ public class UserController {
 		return userService.get(username);
 	}
 		
+//	@RequestMapping(method = RequestMethod.POST)
+//	public User create(@RequestBody User user, HttpServletResponse response) {
+//		System.out.println(user.getFirstname());
+//		System.out.println(user.getLastname());
+//		return userService.create(user);
+//	}
+	
 	@RequestMapping(method = RequestMethod.POST)
-	public User create(@RequestBody User user) {
-		return userService.create(user);
+	public User create(
+			@RequestParam(required = false) String firstname, 
+			@RequestParam(required = false) String lastname,
+			@RequestParam(required = false) String username,
+			@RequestParam(required = false) String password,
+			HttpServletResponse response) {
+		response.setStatus(HttpServletResponse.SC_CREATED);
+		return userService.save(firstname, lastname, username, password);
+		
 	}
 	
 	@RequestMapping(value = "users/validate/user", method = RequestMethod.POST)

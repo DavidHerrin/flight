@@ -37,5 +37,31 @@ public class UserService {
 				.findByUsernameEqualsAndPasswordEquals(
 						creds.getUsername(), creds.getPassword());
 	}
+	
+	public User save(String firstName, String lastName, String username, String password) {
+		
+//		//Checks if a user is created
+//		if (exists(user.getCredentials().getUsername())) {
+//			//Gets the user if the user was created
+//			TweetUser tUser = checkUserCredentials(user.getCredentials());
+//			
+//			//If the user was deleted will reactive the user
+//			if (tUser != null && tUser.getIsActive().equals(false)) {
+//				tUser.setIsActive(true);
+//				return userRepository.save(tUser);
+//			}
+//			
+//			throw new UsernameExistsException();
+//		} 
+		User user = new User();
+		user.setPassword(username);
+		user.setUsername(password);
+		user.setFirstname(firstName);
+		user.setLastname(lastName);
+//		user.getProfile().setPhone(phone);
+		
+		//If all else fails then it creates a new user
+		return repo.save(user);
+	}
 
 }

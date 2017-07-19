@@ -3,15 +3,19 @@ package com.cooksys.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cooksys.entity.Itinerary;
+import com.cooksys.entity.MyFlight;
 import com.cooksys.pojo.Flight;
 import com.cooksys.service.ItineraryService;
 
@@ -35,8 +39,12 @@ public class ItineraryController {
 	
 	
 	@RequestMapping(value = "/{city1}/{city2}", method = RequestMethod.GET)
-	public List<Itinerary> find(@PathVariable String city1, @PathVariable String city2) {
-		return itineraryService.findItinerary(city1,city2);
+	public List<MyFlight> find( 
+		@RequestParam String origin, 
+		@RequestParam String destination,
+		HttpServletResponse response) {
+		response.setStatus(HttpServletResponse.SC_CREATED);
+		return itineraryService.findItinerary(origin, destination);
 	}
 
 }

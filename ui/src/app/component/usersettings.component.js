@@ -2,7 +2,7 @@ import 'app/styles/usersettings.styles'
 import templateUrl from 'app/html/usersettings.template'
 
 const controller = class FtUserSettingsController {
-  constructor ($log, $state, $location, $http, ftGameSettings, $window, $rootScope, appService, localStorageService) {
+  constructor ($log, $state, $location, $http, $interval, ftGameSettings, $window, $rootScope, appService, localStorageService) {
     'ngInject'
     this.localStorageService = localStorageService
     this.service = appService
@@ -11,9 +11,12 @@ const controller = class FtUserSettingsController {
     this.$window = $window
     this.$state = $state
     this.$http = $http
+    this.$interval = $interval
     this.itineraries = []
     this.flights = []
     this.shownoflights = false
+    this.showValidCities = false
+    this.startInterval()
     $rootScope.$on(this.$location.$routeChangeStart, this.checkAuth())
     $log.log('ft-usersettings is a go')
   }
@@ -24,23 +27,38 @@ const controller = class FtUserSettingsController {
     }
   }
 
+  startInterval () {
+    this.$interval(
+      ::this.searchFlights,
+      1000
+    )
+  }
+
   searchFlights () {
-    this.$http({
-      method: 'GET',
-      url: `http://localhost:8000/itinerary/${this.origin}/${this.destination}`,
-      params: { origin: this.origin, destination: this.destination }
-    }).then((response) => {
-      if (response.status === 201) {
-        this.flights = (response.data)
-        this.shownoflights = !this.flights.length
-        console.log(this.flights)
-      } else {
-        console.log('failed search flights')
-        return false
-      }
-    }, (error) => {
-      console.log(error)
-    })
+    if (this.validCity(this.origin) && this.validCity(this.destination)) {
+      this.showValidCities = false
+      this.$http({
+        method: 'GET',
+        url: `http://localhost:8000/itinerary/${this.origin}/${this.destination}`,
+        params: { origin: this.origin, destination: this.destination }
+      }).then((response) => {
+        if (response.status === 201) {
+          this.flights = (response.data)
+          this.shownoflights = !this.flights.length
+        } else {
+          console.log('failed search flights')
+          return false
+        }
+      }, (error) => {
+        console.log(error)
+      })
+    } else {
+      this.showValidCities = true
+    }
+  }
+
+  validCity (cityName) {
+    return (cityName === 'NASHVILLE' || cityName === 'KNOXVILLE' || cityName === 'Memphis' || cityName === 'CHATTANOOGA')
   }
 // updateUser(){
 //   this.$http({

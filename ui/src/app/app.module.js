@@ -1,5 +1,6 @@
 import ngUirouter from 'angular-ui-router'
 import localStorage from 'angular-local-storage'
+// import UsersService from 'app/service/users.service'
 // import flightMap from 'app/map/map.module'
 // import ngMaterial from 'angular-material'
 // import ngAria from 'angular-aria'
@@ -17,6 +18,7 @@ import { ftProfile } from 'app/component/userprofile.component'
 
 import { AppService } from 'app/app.service'
 import { HttpService } from 'app/httpservice.service'
+// import { UsersService } from 'app/service/users.service'
 import { run } from 'app/app.run'
 import { ftGameSettings } from 'app/constants'
 
@@ -36,6 +38,7 @@ export default ng
     usersConfig,
     usersettingsConfig,
     profileConfig,
+    // UsersService,
     // flightMap,
     // ngMaterial,
     // ngAria,
@@ -44,6 +47,7 @@ export default ng
   ])
   .service('appService', AppService)
   .service('httpservice', HttpService)
+  // .service('usersService', UsersService)
   .component('ftApp', ftApp)
   .component('ftHeader', ftHeader)
   .component('ftGame', ftGame)

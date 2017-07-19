@@ -3,10 +3,11 @@ import templateUrl from 'app/html/users.template'
 
 const controller =
   class FtUsersController {
-    constructor ($log, $state, appService, $http, httpservice, localStorageService) {
+    constructor ($log, $state, $interval, appService, $http, httpservice, localStorageService) {
       'ngInject'
       this.localStorageService = localStorageService
       this.$http = $http
+      this.$interval = $interval
       this.httpservice = httpservice
       this.service = appService
       this.$state = $state
@@ -20,9 +21,16 @@ const controller =
       this.PASSWD = this.localStorageService.get('password')
       this.reverseSort = false
       this.orderByField = ''
-      // this.allUsers()
+      this.startInterval()
       this.loadFlights()
       $log.log('ft-users is a go')
+    }
+
+    startInterval () {
+      this.$interval(
+        ::this.loadFlights,
+        1000
+      )
     }
 
     loadFlights () {

@@ -5,5 +5,7 @@ export const usersConfig =
       name: 'users',
       url: '/users',
       component: 'ftUsers'
+      // onEnter: (UsersService) => UsersService.startInterval(),
+      // onExit: (UsersService) => UsersService.cancelInterval()
     })
   }

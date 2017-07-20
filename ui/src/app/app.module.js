@@ -1,7 +1,8 @@
 import ngUirouter from 'angular-ui-router'
 import localStorage from 'angular-local-storage'
+import apiUrl from 'app/apiUrl'
 // import UsersService from 'app/service/users.service'
-import flightMap from 'app/map/map.module'
+// import flightMap from 'app/map/map.module'
 // import ngMaterial from 'angular-material'
 // import ngAria from 'angular-aria'
 // import ngAnimate from 'angular-animate'
@@ -14,7 +15,7 @@ import { ftHome } from 'app/component/home.component'
 import { ftUsers } from 'app/component/users.component'
 import { ftUserSettings } from 'app/component/usersettings.component'
 import { ftProfile } from 'app/component/userprofile.component'
-// import { flightMap } from 'app/map/map.component.js'
+import flightMap from 'app/map/map.module'
 
 import { AppService } from 'app/app.service'
 import { HttpService } from 'app/httpservice.service'
@@ -57,6 +58,7 @@ export default ng
   .component('ftProfile', ftProfile)
   .component('ftUserSettings', ftUserSettings)
   // .component('flightMap', flightMap)
+  .constant('apiUrl', apiUrl)
   .constant('ftGameSettings', ftGameSettings)
   .config(config)
   .run(run)

@@ -40,82 +40,82 @@ const controller = class FtRegisterController {
   //   this.error = 'Username or password are incorrect, please try again.'
   // })
   // }
-likeTweet (id) {
-
-  let username = this.localStorageService.get('username')
-  let password = this.localStorageService.get('password')
-  //alert(username + ' ' + password)
-  this.$http({
-  method: 'POST',
-  url:  'http://localhost:8080/tweet/tweets/' + id + '/like',
-  data: {credentials: { password: password, username: username }}
-}).then(this.successCallback = (response) => {
-  //  alert('Liked')
-}, this.errorCallback = (response) => {
-  this.error = 'Username or password are incorrect, please try again.'
-})
-}
-repostTweet (id) {
- //  alert('Repost!')
- let username = this.localStorageService.get('username')
- let password = this.localStorageService.get('password')
-  this.$http({
-  method: 'POST',
-  url: 'http://localhost:8080/tweet/tweets/' + id + '/repost',
-  data: {credentials: { password: password, username: username }}
-}).then(this.successCallback = (response) => {
-  //  alert('201')
-}, this.errorCallback = (response) => {
-  this.error = 'Username or password are incorrect, please try again.'
-})
-this.$window.location.reload()
-}
-postTweet () {
-  // alert('Post!')
-  let username = this.localStorageService.get('username')
-  let password = this.localStorageService.get('password')
-  this.$http({
-  method: 'POST',
-  url: 'http://localhost:8080/tweet/tweets',
-  data: {'content': this.tweet, 'credentials': { 'password': password, 'username': username }}
-}).then(this.successCallback = (response) => {
-  //  alert('201')
-this.loadTweets()
-
-}, this.errorCallback = (response) => {
-  this.error = 'Username or password are incorrect, please try again.'
-})
-}
-replyTweet (id) {
-  //alert(this.reply)
-  let username = this.localStorageService.get('username')
-  let password = this.localStorageService.get('password')
-  this.$http({
-  method: 'POST',
-  url: 'http://localhost:8080/tweet/tweets/' + id + '/reply',
-  data: {'content': this.reply, 'credentials': { 'password': password, 'username': username }}
-}).then(this.successCallback = (response) => {
-  //  alert('201')
-}, this.errorCallback = (response) => {
-  this.error = 'Username or password are incorrect, please try again.'
-})
-this.$window.location.reload()
-}
-deleteTweet (id) {
- //  alert('Repost!')
- let username = this.localStorageService.get('username')
- let password = this.localStorageService.get('password')
-  this.$http({
-  method: 'POST',
-  url: 'http://localhost:8080/tweet/tweets/' + id,
-  data: {credentials: { password: password, username: username }}
-}).then(this.successCallback = (response) => {
-//  alert("reloading")
-}, this.errorCallback = (response) => {
-  this.error = 'Username or password are incorrect, please try again.'
-})
-this.$window.location.reload()
-}
+// likeTweet (id) {
+//
+//   let username = this.localStorageService.get('username')
+//   let password = this.localStorageService.get('password')
+//   //alert(username + ' ' + password)
+//   this.$http({
+//   method: 'POST',
+//   url:  'http://localhost:8080/tweet/tweets/' + id + '/like',
+//   data: {credentials: { password: password, username: username }}
+// }).then(this.successCallback = (response) => {
+//   //  alert('Liked')
+// }, this.errorCallback = (response) => {
+//   this.error = 'Username or password are incorrect, please try again.'
+// })
+// }
+// repostTweet (id) {
+//  //  alert('Repost!')
+//  let username = this.localStorageService.get('username')
+//  let password = this.localStorageService.get('password')
+//   this.$http({
+//   method: 'POST',
+//   url: 'http://localhost:8080/tweet/tweets/' + id + '/repost',
+//   data: {credentials: { password: password, username: username }}
+// }).then(this.successCallback = (response) => {
+//   //  alert('201')
+// }, this.errorCallback = (response) => {
+//   this.error = 'Username or password are incorrect, please try again.'
+// })
+// this.$window.location.reload()
+// }
+// postTweet () {
+//   // alert('Post!')
+//   let username = this.localStorageService.get('username')
+//   let password = this.localStorageService.get('password')
+//   this.$http({
+//   method: 'POST',
+//   url: 'http://localhost:8080/tweet/tweets',
+//   data: {'content': this.tweet, 'credentials': { 'password': password, 'username': username }}
+// }).then(this.successCallback = (response) => {
+//   //  alert('201')
+// this.loadTweets()
+//
+// }, this.errorCallback = (response) => {
+//   this.error = 'Username or password are incorrect, please try again.'
+// })
+// }
+// replyTweet (id) {
+//   //alert(this.reply)
+//   let username = this.localStorageService.get('username')
+//   let password = this.localStorageService.get('password')
+//   this.$http({
+//   method: 'POST',
+//   url: 'http://localhost:8080/tweet/tweets/' + id + '/reply',
+//   data: {'content': this.reply, 'credentials': { 'password': password, 'username': username }}
+// }).then(this.successCallback = (response) => {
+//   //  alert('201')
+// }, this.errorCallback = (response) => {
+//   this.error = 'Username or password are incorrect, please try again.'
+// })
+// this.$window.location.reload()
+// }
+// deleteTweet (id) {
+//  //  alert('Repost!')
+//  let username = this.localStorageService.get('username')
+//  let password = this.localStorageService.get('password')
+//   this.$http({
+//   method: 'POST',
+//   url: 'http://localhost:8080/tweet/tweets/' + id,
+//   data: {credentials: { password: password, username: username }}
+// }).then(this.successCallback = (response) => {
+// //  alert("reloading")
+// }, this.errorCallback = (response) => {
+//   this.error = 'Username or password are incorrect, please try again.'
+// })
+// this.$window.location.reload()
+// }
 getSelUser (author) {
   this.service.saveState('author', author)
   this.$state.transitionTo('profile')

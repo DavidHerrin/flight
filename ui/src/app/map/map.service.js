@@ -1,6 +1,7 @@
-/* @ngInject */
+
 class MapService {
   constructor ($http, apiUrl) {
+    'ngInject'
     this.$http = $http
     this.apiUrl = apiUrl
   }

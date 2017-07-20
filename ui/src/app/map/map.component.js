@@ -1,6 +1,6 @@
-import templateUrl from './map.component.html'
+import templateUrl from 'app/map/map.component.html'
 
-/* @ngInject */
+const controller =
 class MapController {
   zoom = 7
   center = [35.5175, -86.5804]
@@ -8,6 +8,7 @@ class MapController {
   paths = []
 
   constructor ($map, locations) {
+    'ngInject'
     this.$map = $map
 
     // add markers from an angular constant
@@ -49,8 +50,8 @@ class MapController {
 
 }
 
-export default {
+export const flightMap = {
   templateUrl,
-  controller: MapController,
+  controller,
   controllerAs: '$mapCtrl'
 }
